@@ -1,9 +1,13 @@
-/* 
+/*
 html5doctor.com Reset Stylesheet
-v1.4.1 
+v1.4.1
 2010-03-01
 Author: Richard Clark - http://richclarkdesign.com
 */
+
+[v-cloak] {
+  display: none !important;
+}
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -14,7 +18,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
     margin:0;
@@ -35,7 +39,7 @@ body {
 }
 
 article,aside,canvas,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section,summary { 
+footer,header,hgroup,menu,nav,section,summary {
     display:block;
 }
 
@@ -70,7 +74,7 @@ ins {
 
 mark {
     background-color:#ff9;
-    color:#000; 
+    color:#000;
     font-style:italic;
     font-weight:bold;
 }
@@ -92,7 +96,7 @@ table {
 hr {
     display:block;
     height:1px;
-    border:0;   
+    border:0;
     border-top:1px solid #cccccc;
     margin:1em 0;
     padding:0;

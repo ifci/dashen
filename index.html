@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/index/index.css">
 </head>
 
-<body id="app">
+<body id="app" v-cloak>
     <!-- header -->
 	<div id="header">
     	<!-- search -->
@@ -41,9 +41,9 @@
                 <div class="icon_return_trs"></div>
                 <div class="box_search_trs">
                     <div class="txt_search_trs">全站</div>
-                    <input class="search_trs" placeholder="搜索标题 / 地点 / 发起人" />
+                    <input class="search_trs" placeholder="搜索标题 / 地点 / 发起人" v-el:search-text />
                 </div>
-                <div class="icon_search_trs"></div>
+                <div class="icon_search_trs" @click="search"></div>
             </div>
             <!-- /focus search -->
 
@@ -93,10 +93,10 @@
     	<div class="list">
         	<!-- search-nav -->
             <div class="search-nav">
-                <a href="问答广场" class="selected">问答广场</a>
-                <a href="问答广场">热门</a>
-                <a href="问答广场">未答</a>
-                <a href="问答广场">关注</a>
+                <a @click="state('')" :class="{'selected': stateActive === ''}">问答广场</a>
+                <a @click="state('热门')" :class="{'selected': stateActive === '热门'}">热门</a>
+                <a @click="state('未答')" :class="{'selected': stateActive === '未答'}">未答</a>
+                <a @click="state('关注')" :class="{'selected': stateActive === '关注'}">关注</a>
             </div>
         	<!-- search-nav -->
         	<div class="box">
@@ -110,7 +110,7 @@
                         <div class="tag-time">
                             <a class="tag" v-for="i in item.tag">{{ i }}</a>
                             <span class="time">&middot;&nbsp;&nbsp;
-                            <i class="icon iconfont">&#xe662;</i>2小时前</span>
+                            <i class="icon iconfont">&#xe662;</i>{{ item.pubdate | timeAgo }}</span>
                         </div>
                         <div class="user-question-info">
                             <img :src="item.avatar" />
@@ -122,7 +122,7 @@
                 </div>
             </div><!-- /box -->
             <!-- page -->
-			<div id="pager"><div class="more">更多&gt;</div></div>
+			<div id="pager" v-if="page + 1 < totalPage"><div class="more" @click="more">更多&gt;</div></div>
             <!-- /page -->
         </div>
     	<!-- /list -->
